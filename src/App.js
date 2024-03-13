@@ -12,7 +12,7 @@ function App() {
   // console.log(fantasyBooks)
   return (
     <>
-      <main className='body'> 
+      <main className='body bg-secondary'> 
         <NavBar />
         <AllTheBooks books={fantasyBooks} />
         <Footer />
