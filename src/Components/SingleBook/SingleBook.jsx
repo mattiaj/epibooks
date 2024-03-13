@@ -26,7 +26,7 @@ export default function BookCard({bookData}) {
               </Card.Text>
               
             </div>
-            <Button variant="primary" className='fine' onClick={handleSelect}>Aggiungi al carrello</Button>
+            <Button variant="outline-primary" onClick={handleSelect}>Aggiungi al carrello</Button>
           </Card.Body>
         </Card>
     </>

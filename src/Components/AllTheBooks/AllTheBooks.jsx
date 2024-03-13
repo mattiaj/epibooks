@@ -24,6 +24,7 @@ export default function AllTheBooks({books}) {
             <Row className='justify-content-center'>
             <Form.Group className='col-6 p-0'>
               <Form.Control 
+              className='text-center'
               type="text" 
               placeholder='Cerca il tuo libro...'
               value={inputName} 
