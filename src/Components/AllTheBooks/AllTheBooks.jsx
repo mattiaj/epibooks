@@ -8,8 +8,8 @@ export default function AllTheBooks({books}) {
   const [inputName, setInputName] = useState("");
   const [searchResult, setSearchResult] = useState(books);
 
-  function handleSubmit() {
-    
+  function handleSubmit(e) {
+    setInputName(e)
    let filteredBooks = books.filter((book) => book.title.toLowerCase().trim().includes(inputName.toLowerCase().trim()));
    console.log(filteredBooks)
    setSearchResult(filteredBooks);
@@ -27,9 +27,8 @@ export default function AllTheBooks({books}) {
               type="text" 
               placeholder='Cerca il tuo libro...'
               value={inputName} 
-              onChange={(e)=> setInputName(e.target.value)}/>
+              onChange={(e)=> handleSubmit(e.target.value)}/>
             </Form.Group>
-            <Button className='col-1' onClick={()=> handleSubmit(inputName)}>Invio</Button>
             </Row>
           </Form>
             <Row className='justify-content-around mt-4'>

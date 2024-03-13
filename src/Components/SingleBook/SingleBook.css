@@ -2,9 +2,24 @@
     height: 360px;
 }
 
+.card-title {
+    max-height: 52px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
 .card-body {
     max-height: 230px;
-
+    display: grid;
 }
 
 
+div.info-box > p {
+    margin: 0;
+}
+div.info-box {
+    margin: 1em 0;
+}

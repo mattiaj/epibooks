@@ -17,13 +17,16 @@ export default function BookCard({bookData}) {
           <Card.Img variant="top" className='image' src={img} />
           <Card.Body >
             <Card.Title>{title}</Card.Title>
-            <Card.Text>
-              <strong>Prezzo: </strong> €{price}
-            </Card.Text>
-            <Card.Text>
-                <strong>Categoria: </strong> {category}
-            </Card.Text>
-            <Button variant="primary" onClick={handleSelect}>Aggiungi al carrello</Button>
+            <div className='info-box'>
+              <Card.Text>
+                  <strong>Categoria: </strong> {category}
+              </Card.Text>
+              <Card.Text>
+                <strong>Prezzo: </strong> €{price}
+              </Card.Text>
+              
+            </div>
+            <Button variant="primary" className='fine' onClick={handleSelect}>Aggiungi al carrello</Button>
           </Card.Body>
         </Card>
     </>
