@@ -1,5 +1,6 @@
 import './App.css';
 import NavBar from './Components/MyNav/Navbar';
+import Welcome from './Components/Welcome/Welcome';
 import Footer from './Components/MyFooter/Footer';
 import AllTheBooks from './Components/AllTheBooks/AllTheBooks';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -14,6 +15,7 @@ function App() {
     <>
       <main className='body bg-secondary'> 
         <NavBar />
+        <Welcome />
         <AllTheBooks books={fantasyBooks} />
         <Footer />
       </main>

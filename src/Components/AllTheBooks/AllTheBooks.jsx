@@ -10,14 +10,11 @@ export default function AllTheBooks({books}) {
 
   function handleSubmit() {
     
-   let filteredBooks = searchResult.filter((book) => book.title.toLowerCase().trim().includes(inputName.toLowerCase().trim()));
+   let filteredBooks = books.filter((book) => book.title.toLowerCase().trim().includes(inputName.toLowerCase().trim()));
    console.log(filteredBooks)
    setSearchResult(filteredBooks);
   }
 
-  function clear() {
-    setSearchResult(books)
-  }
 
   return (
     <>
@@ -33,10 +30,9 @@ export default function AllTheBooks({books}) {
               onChange={(e)=> setInputName(e.target.value)}/>
             </Form.Group>
             <Button className='col-1' onClick={()=> handleSubmit(inputName)}>Invio</Button>
-            <Button className='col-1 ms-auto' onClick={clear}>Clear</Button>
             </Row>
           </Form>
-            <Row className='justify-content-between mt-4'>
+            <Row className='justify-content-around mt-4'>
                 {searchResult.map((ele) => <SingleBook key={ele.asin} bookData={ele}/>)}
             </Row>
         </Container>
