@@ -1,3 +1,7 @@
+.card {
+    cursor: pointer;
+}
+
 .image {
     height: 360px;
 }

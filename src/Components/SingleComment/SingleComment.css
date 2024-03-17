@@ -1,0 +1,6 @@
+.comment {
+    border-radius: 5px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+    height: 80px;
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import CommentArea from '../CommentArea/CommentArea';
 import { useState } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import './SingleBook.css'
@@ -13,8 +14,8 @@ export default function BookCard({bookData}) {
     }
   return (
     <>
-        <Card className='col-md-3 col-6 p-0 mb-4 border-3' border={selected ? `danger` : `secondary`} style={{ width: '18rem' }}>
-          <Card.Img variant="top" className='image' src={img} />
+        <Card className='card col-md-3 col-6 pt-2 mb-4 border-2' border={selected ? `danger` : `secondary`} style={{ width: '18rem' }}>
+          <Card.Img variant="top" onClick={handleSelect} className='image' src={img} />
           <Card.Body >
             <Card.Title>{title}</Card.Title>
             <div className='info-box'>
@@ -26,8 +27,13 @@ export default function BookCard({bookData}) {
               </Card.Text>
               
             </div>
-            <Button variant="outline-primary" onClick={handleSelect}>Aggiungi al carrello</Button>
+            <Button variant="outline-primary" >Aggiungi al carrello</Button>
           </Card.Body>
+          {selected && 
+          <Card.Footer>
+            <CommentArea />
+          </Card.Footer>
+          }
         </Card>
     </>
   )
