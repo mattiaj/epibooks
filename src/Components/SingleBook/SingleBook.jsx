@@ -5,7 +5,7 @@ import { Card, Button } from 'react-bootstrap';
 import './SingleBook.css'
 
 export default function BookCard({bookData}) {
-    const {title, price, category, img} = bookData;
+    const {title, price, category, img, asin} = bookData;
 
     const  [ selected, setSelected ]  = useState(false);
 
@@ -14,7 +14,7 @@ export default function BookCard({bookData}) {
     }
   return (
     <>
-        <Card className='card col-md-3 col-6 pt-2 mb-4 border-2' border={selected ? `danger` : `secondary`} style={{ width: '18rem' }}>
+        <Card id={asin} className='card col-md-3 col-6 pt-2 mb-4 border-2' border={selected ? `danger` : `secondary`} style={{ width: '18rem' }}>
           <Card.Img variant="top" onClick={handleSelect} className='image' src={img} />
           <Card.Body >
             <Card.Title>{title}</Card.Title>
@@ -31,7 +31,7 @@ export default function BookCard({bookData}) {
           </Card.Body>
           {selected && 
           <Card.Footer>
-            <CommentArea />
+            <CommentArea bookId={bookData.asin} />
           </Card.Footer>
           }
         </Card>

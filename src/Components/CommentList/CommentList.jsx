@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CommentList.css';
 import SingleComment from '../SingleComment/SingleComment';
 
-export default function CommentList() {
+export default function CommentList({showComment}) {
 
     const [viewList, setViewList] = useState(false);
 
@@ -17,7 +17,7 @@ export default function CommentList() {
     <a href='#' onClick={viewComment} >Leggi Recensioni</a>
    </div>
    {viewList && 
-    <SingleComment />
+      showComment.map((ele) => <SingleComment key={ele._id} comment={ele} />)
    }
    </>
   )

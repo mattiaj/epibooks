@@ -16,7 +16,7 @@ function App() {
       <main className='body bg-secondary'> 
         <NavBar />
         <Welcome />
-        <AllTheBooks books={fantasyBooks} numOfBook = {5} />
+        <AllTheBooks books={fantasyBooks} />
         <Footer />
       </main>
     </>
