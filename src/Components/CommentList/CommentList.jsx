@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './CommentList.css';
 import SingleComment from '../SingleComment/SingleComment';
 
-export default function CommentList({showComment}) {
+export default function CommentList({showComment, deleteComment}) {
 
     const [viewList, setViewList] = useState(false);
 
@@ -13,11 +13,11 @@ export default function CommentList({showComment}) {
 
   return (
    <>
-   <div className='text-center'>
+   <div className='text-center lista'>
     <a href='#' onClick={viewComment} >Leggi Recensioni</a>
    </div>
    {viewList && 
-      showComment.map((ele) => <SingleComment key={ele._id} comment={ele} />)
+      showComment.map((ele) => <SingleComment  key={ele._id} comment={ele} deleteComment={deleteComment} />)
    }
    </>
   )

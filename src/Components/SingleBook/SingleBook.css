@@ -27,3 +27,9 @@ div.info-box > p {
 div.info-box {
     margin: 1em 0;
 }
+
+.card-footer {
+    height: 230px;
+    overflow-y: hidden;
+    overflow-y: scroll;
+}

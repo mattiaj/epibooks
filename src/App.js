@@ -1,4 +1,5 @@
 import './App.css';
+import { useState } from 'react';
 import NavBar from './Components/MyNav/Navbar';
 import Welcome from './Components/Welcome/Welcome';
 import Footer from './Components/MyFooter/Footer';
@@ -9,14 +10,16 @@ import fantasy from './data/fantasy.json';
 
 
 function App() {
+
   const fantasyBooks = fantasy;
-  // console.log(fantasyBooks)
+  const [inputName, setInputName] = useState("");
+
   return (
     <>
       <main className='body bg-secondary'> 
-        <NavBar />
+        <NavBar setInput={setInputName} />
         <Welcome />
-        <AllTheBooks books={fantasyBooks} />
+        <AllTheBooks books={fantasyBooks} input={inputName} />
         <Footer />
       </main>
     </>
