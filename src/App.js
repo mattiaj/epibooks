@@ -4,6 +4,7 @@ import NavBar from './Components/MyNav/Navbar';
 import Welcome from './Components/Welcome/Welcome';
 import Footer from './Components/MyFooter/Footer';
 import AllTheBooks from './Components/AllTheBooks/AllTheBooks';
+import ThemeContextProvider from './context/ThemeContextProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import fantasy from './data/fantasy.json';
 
@@ -16,12 +17,12 @@ function App() {
 
   return (
     <>
-      <main className='body bg-secondary'> 
+    <ThemeContextProvider>
         <NavBar setInput={setInputName} />
         <Welcome />
         <AllTheBooks books={fantasyBooks} input={inputName} />
         <Footer />
-      </main>
+    </ThemeContextProvider>
     </>
   );
 }

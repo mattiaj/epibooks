@@ -13,7 +13,7 @@ export default function SingleComment({comment, deleteComment}) {
         <p className='comment border border-2 mb-1'>{comment.comment}</p>
         <div className='d-flex justify-content-end'>
 
-        <Button size='sm' onClick={() => deleteComment(comment._id) } >Cancella</Button>
+        <Button size='sm' variant='danger' onClick={() => deleteComment(comment._id) } >Delete</Button>
         </div>
     </>
   )
