@@ -5,6 +5,7 @@ import Welcome from './Components/Welcome/Welcome';
 import Footer from './Components/MyFooter/Footer';
 import AllTheBooks from './Components/AllTheBooks/AllTheBooks';
 import ThemeContextProvider from './context/ThemeContextProvider';
+import SelectContextProvider from './context/SelectContextProvider';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import fantasy from './data/fantasy.json';
 
@@ -20,7 +21,9 @@ function App() {
     <ThemeContextProvider>
         <NavBar setInput={setInputName} />
         <Welcome />
-        <AllTheBooks books={fantasyBooks} input={inputName} />
+        <SelectContextProvider>
+          <AllTheBooks books={fantasyBooks} input={inputName} />
+        </SelectContextProvider>
         <Footer />
     </ThemeContextProvider>
     </>

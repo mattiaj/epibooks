@@ -1,7 +1,10 @@
-import React, { useState, useEffect } from 'react'
-import { Form, Button } from 'react-bootstrap'
+import React, { useState, useEffect, useContext } from 'react';
+import { Form, Button } from 'react-bootstrap';
+import { themeContext } from '../../context/ThemeContextProvider';
 
-export default function AddComment({Api, token, asin}) {
+export default function AddComment({Api, token, asin, getComments}) {
+
+  const {theme} = useContext(themeContext);
 
   const [comment, setComment] = useState({
     comment: '',
@@ -28,9 +31,9 @@ export default function AddComment({Api, token, asin}) {
         },
         body: JSON.stringify(comment),
       })
-      console.log(response)
       
       if(response.ok) {
+
         alert('Commento inviato');
         setComment({
           comment: '',
@@ -50,26 +53,31 @@ export default function AddComment({Api, token, asin}) {
   
   return (
     <>
-        <Form onSubmit={newComment}>
+        <hr></hr>
+        <Form onSubmit={newComment} >
             <Form.Group>
                 <Form.Control
-                className='my-3'
+                className={theme === "dark" ? "bg-secondary m-2 text-light" : "m-2"}
+                style={{width: "90%"}}
                 placeholder='Inscerisci il tuo commento'
                 value={comment.comment}
                 onChange={(e) => setComment({...comment, comment: e.target.value})}
                 />
-                <span>Valutazione: </span>
-                <Form.Control
-                type='number'
-                className='text-center'
-                min={1} max={5} step={1}
-                value={comment.rate}
-                onChange={(e) => setComment({...comment, rate: e.target.value})}
-                />
+                <div className='d-flex align-items-center justify-content-around'>
+                  <span>Valutazione: </span>
+                  <Form.Control
+                  className={theme === "dark" ? "bg-secondary text-light text-center" : "text-center"}
+                  style={{width: "23%"}}
+                  type='number'
+                  min={1} max={5} step={1}
+                  value={comment.rate}
+                  onChange={(e) => setComment({...comment, rate: e.target.value})}
+                  />
+                  <div>
+                      <Button type="submit" onClick={() => getComments()} className='mt-2'>Invia</Button>
+                  </div>
+                </div>
             </Form.Group>
-            <div className='text-end'>
-                <Button type="submit" className='mt-2'>Invia</Button>
-            </div>
         </Form>
     </>
   )
