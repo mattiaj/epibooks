@@ -4,12 +4,15 @@ import CommentArea from '../CommentArea/CommentArea';
 import { SelectContext } from '../../context/SelectContextProvider';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useState, useEffect } from 'react';
+import Welcome from '../Welcome/Welcome';
+import { CloseButton } from 'react-bootstrap';
+
 
 export default function AllTheBooks({books, input}) {
   const [searchResult, setSearchResult] = useState(books);
-  const {selected} = useContext(SelectContext);
+  const {selected, setSelected} = useContext(SelectContext);
 
-console.log(books)
+// console.log(books)
 
   useEffect(() => {
     const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(input.toLowerCase().trim()));
@@ -19,6 +22,7 @@ console.log(books)
 
   return (
     <>
+      <Welcome />
         <Container className='mt-3'>
           <Row>
             <Col md={8}>
@@ -27,8 +31,11 @@ console.log(books)
               </Row>
             </Col>
             <Col md={{ span: 3, offset: 1 }}>
+            <div className='d-flex justify-content-between align-items-center'>
               <h2>Commenti:</h2>
-              {selected && <CommentArea bookID={books.asin}  />}
+              {selected && <CloseButton onClick={() => setSelected("")} />}
+            </div>
+              {selected && <CommentArea />}
             </Col>
           </Row>
         </Container>

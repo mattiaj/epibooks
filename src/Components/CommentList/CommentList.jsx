@@ -15,12 +15,7 @@ export default function CommentList({showComment, deleteComment}) {
 
   return (
    <>
-   <div className='text-center lista mb-2'>
-    <a href='#' onClick={viewComment} className={theme === "dark" ? "link-light" : ""} >Leggi Recensioni</a>
-   </div>
-   {viewList && 
-      showComment.map((ele) => <SingleComment  key={ele._id} comment={ele} deleteComment={deleteComment} />)
-   }
+      {showComment.map((ele) => <SingleComment  key={ele._id} comment={ele} deleteComment={deleteComment} />)}
    </>
   )
 }

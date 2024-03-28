@@ -1,0 +1,16 @@
+.box-singleBook {
+    height: 100vh;
+}
+
+.myCard {
+    height: 80vh;
+    width: 55em;
+}
+
+.myImg {
+    height: 80vh;
+    width: auto;
+}
+/* img {
+    height: 100px;
+} */

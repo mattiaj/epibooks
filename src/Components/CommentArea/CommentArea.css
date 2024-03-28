@@ -1,4 +1,13 @@
 .comment-section {
-    height: 60vh;
+    height: 20em;
     overflow-y: scroll;
+}
+
+.comment-section::-webkit-scrollbar {
+    background-color: transparent;
+}
+
+.setHeight {
+    height: 10rem;
+    padding: 1em 0;
 }

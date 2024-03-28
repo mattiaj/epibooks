@@ -1,31 +1,30 @@
 import './App.css';
-import { useState } from 'react';
-import NavBar from './Components/MyNav/Navbar';
-import Welcome from './Components/Welcome/Welcome';
-import Footer from './Components/MyFooter/Footer';
-import AllTheBooks from './Components/AllTheBooks/AllTheBooks';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import AllTheBooksHome from './Components/AllTheBooksHome/AllTheBooksHome';
+import BookDetails from './Components/BookDetails/BookDetails';
 import ThemeContextProvider from './context/ThemeContextProvider';
 import SelectContextProvider from './context/SelectContextProvider';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import fantasy from './data/fantasy.json';
+import NotFound from './Components/NotFound/NotFound';
 
 
 
 function App() {
 
-  const fantasyBooks = fantasy;
-  const [inputName, setInputName] = useState("");
-
   return (
     <>
-    <ThemeContextProvider>
-        <NavBar setInput={setInputName} />
-        <Welcome />
-        <SelectContextProvider>
-          <AllTheBooks books={fantasyBooks} input={inputName} />
-        </SelectContextProvider>
-        <Footer />
-    </ThemeContextProvider>
+      <ThemeContextProvider>
+      <SelectContextProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path='/' element={<AllTheBooksHome />} />
+            <Route path='/datails/:asin' element={<BookDetails />} />
+            <Route path='/*' element={<NotFound />} />
+          </Routes>
+        </BrowserRouter>
+      </SelectContextProvider>
+      </ThemeContextProvider>
+
     </>
   );
 }

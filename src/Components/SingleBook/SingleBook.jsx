@@ -4,6 +4,7 @@ import { Card, Button } from 'react-bootstrap';
 import { themeContext } from '../../context/ThemeContextProvider';
 import { SelectContext } from '../../context/SelectContextProvider';
 import './SingleBook.css'
+import { useNavigate } from 'react-router-dom';
 
 export default function BookCard({bookData}) {
     const {title, price, category, img, asin} = bookData;
@@ -11,9 +12,15 @@ export default function BookCard({bookData}) {
     // const  [ selected, setSelected ]  = useState(false);
     const {theme} = useContext(themeContext);
     const {selected, setSelected} = useContext(SelectContext);
+    const navigate = useNavigate();
 
     function handleSelect() {
       setSelected(asin);
+    }
+
+    function navigateSelect () {
+      navigate(`/datails/${asin}`);
+      setSelected(asin)
     }
 
   useEffect(() => {
@@ -35,7 +42,7 @@ export default function BookCard({bookData}) {
               </Card.Text>
               
             </div>
-            <Button variant="outline-primary" >Aggiungi al carrello</Button>
+            <Button variant="outline-primary" onClick={navigateSelect} >Dettagli</Button>
           </Card.Body>
           {/* {selected && 
           <Card.Footer>
