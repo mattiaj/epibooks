@@ -1,17 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react';
 import fantasy from '../../data/fantasy.json'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './BookDetails.css'
-import { Container, Row, Col, Card } from 'react-bootstrap';
+import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import CommentArea from '../CommentArea/CommentArea';
 import { SelectContext } from '../../context/SelectContextProvider';
-
+import { themeContext } from '../../context/ThemeContextProvider';
+import { BsFillMoonStarsFill } from "react-icons/bs";
+import { FaRegSun } from "react-icons/fa";
+import { LuArrowLeftFromLine } from "react-icons/lu";
 
 export default function BookDetails() {
 
     const params = useParams();
     const [book, setBook] = useState([]);
-    const {selected} = useContext(SelectContext);
+    const {selected, setSelected} = useContext(SelectContext);
+    const {theme, setTheme} = useContext(themeContext);
+    const navigate = useNavigate();
+
+    function home () {
+        setSelected("");
+        navigate("/");
+    }
 
     
     function bookParam () {
@@ -29,11 +39,16 @@ export default function BookDetails() {
     },[params])
 
   return (
-    <Container className='d-md-flex justify-content-center align-items-center box-singleBook'>
-        <Row>
-            {/* <Col md={{ span: 8, offset: 2 }}> */}
+    <main className={theme === "dark" ? "bg-secondary" : ""}>
+        <div className='btn-container'>
+            <Button onClick={home} className='bg-dark border-0 me-2'><LuArrowLeftFromLine /></Button>
+            <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className={theme === "dark" ? "d-none" : "bg-dark border-0"}><FaRegSun /></Button>
+            <Button onClick={() => setTheme(theme === "light" ? "dark" : "light")} className={theme === "dark" ? "bg-dark border-0" : "d-none"}><BsFillMoonStarsFill /></Button>
+        </div>
+        <Container className='d-md-flex justify-content-center align-items-center box-singleBook'>
+            <Row>
                 {book.map((el) => (
-                    <Card key={el.asin} className='myCard' >
+                    <Card key={el.asin} className={theme === "dark" ? "myCard bg-dark text-light" : "myCard"} >
                         <Row>
                             <Col className='p-0'>
                                 <img src={el.img} alt='immagine libro' className='card-img myImg' />
@@ -52,8 +67,8 @@ export default function BookDetails() {
                         </Row>
                     </Card>
                 ))}
-            {/* </Col> */}
-        </Row>
-    </Container>
+            </Row>
+        </Container>
+    </main>
   )
 }

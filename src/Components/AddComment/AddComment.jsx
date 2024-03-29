@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { themeContext } from '../../context/ThemeContextProvider';
+import { BsSendArrowUpFill } from "react-icons/bs";
 
 export default function AddComment({Api, token, asin, getComments}) {
 
@@ -74,7 +75,7 @@ export default function AddComment({Api, token, asin, getComments}) {
                   onChange={(e) => setComment({...comment, rate: e.target.value})}
                   />
                   <div>
-                      <Button type="submit" onClick={() => getComments()} className='mt-2'>Invia</Button>
+                      <Button type="submit" onClick={() => getComments()} className='mt-2'><BsSendArrowUpFill /></Button>
                   </div>
                 </div>
             </Form.Group>

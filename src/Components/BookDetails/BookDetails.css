@@ -11,6 +11,9 @@
     height: 80vh;
     width: auto;
 }
-/* img {
-    height: 100px;
-} */
+
+.btn-container {
+    position: absolute;
+    top: 1em;
+    left: 1em;;
+}
