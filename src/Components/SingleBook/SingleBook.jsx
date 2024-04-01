@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { themeContext } from '../../context/ThemeContextProvider';
@@ -23,9 +23,6 @@ export default function BookCard({bookData}) {
       setSelected(asin)
     }
 
-  useEffect(() => {
-    console.log(selected)
-  }, [selected])
 
   return (
     <>

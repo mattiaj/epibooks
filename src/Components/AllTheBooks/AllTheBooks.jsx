@@ -9,14 +9,17 @@ import { CloseButton } from 'react-bootstrap';
 
 
 export default function AllTheBooks({books, input}) {
-  const [searchResult, setSearchResult] = useState(books);
+  const [searchResult, setSearchResult] = useState();
   const {selected, setSelected} = useContext(SelectContext);
 
 // console.log(books)
 
   useEffect(() => {
-    const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(input.toLowerCase().trim()));
-    setSearchResult(filteredBooks);
+
+    if(books) {
+      const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(input.toLowerCase().trim()));
+      setSearchResult(filteredBooks);
+    }
 }, [input, books]);
 
 
@@ -27,7 +30,7 @@ export default function AllTheBooks({books, input}) {
           <Row>
             <Col md={8}>
               <Row className='justify-content-around mt-4'>
-                  {searchResult.map((ele) => <SingleBook key={ele.asin} bookData={ele}/>)}
+                  {searchResult.map((ele) => <SingleBook key={ele.asin} bookData={ele} data-testid="card" />)}
               </Row>
             </Col>
             <Col md={{ span: 3, offset: 1 }}>

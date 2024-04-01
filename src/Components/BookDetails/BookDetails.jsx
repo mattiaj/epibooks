@@ -1,27 +1,19 @@
 import React, { useContext, useEffect, useState } from 'react';
 import fantasy from '../../data/fantasy.json'
-import { useNavigate, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './BookDetails.css'
-import { Container, Row, Col, Card, Button } from 'react-bootstrap';
+import { Container, Row, Col, Card } from 'react-bootstrap';
 import CommentArea from '../CommentArea/CommentArea';
 import { SelectContext } from '../../context/SelectContextProvider';
 import { themeContext } from '../../context/ThemeContextProvider';
-import { BsFillMoonStarsFill } from "react-icons/bs";
-import { FaRegSun } from "react-icons/fa";
-import { LuArrowLeftFromLine } from "react-icons/lu";
 
 export default function BookDetails() {
 
     const params = useParams();
     const [book, setBook] = useState([]);
-    const {selected, setSelected} = useContext(SelectContext);
-    const {theme, setTheme} = useContext(themeContext);
-    const navigate = useNavigate();
+    const {selected} = useContext(SelectContext);
+    const {theme} = useContext(themeContext);
 
-    function home () {
-        setSelected("");
-        navigate("/");
-    }
 
     
     function bookParam () {
@@ -32,7 +24,6 @@ export default function BookDetails() {
         setBook(filtered);
 
     };
-    console.log(selected)
     
     useEffect(() => {
         bookParam();
@@ -40,11 +31,6 @@ export default function BookDetails() {
 
   return (
     <main className={theme === "dark" ? "bg-secondary" : ""}>
-        <div className='btn-container'>
-            <Button onClick={home} className='bg-dark border-0 me-2'><LuArrowLeftFromLine /></Button>
-            <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")} className={theme === "dark" ? "d-none" : "bg-dark border-0"}><FaRegSun /></Button>
-            <Button onClick={() => setTheme(theme === "light" ? "dark" : "light")} className={theme === "dark" ? "bg-dark border-0" : "d-none"}><BsFillMoonStarsFill /></Button>
-        </div>
         <Container className='d-md-flex justify-content-center align-items-center box-singleBook'>
             <Row>
                 {book.map((el) => (

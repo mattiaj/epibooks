@@ -71,12 +71,14 @@ async function deleteComment(id) {
 
   return (
     <>
-    <div className={theme === "dark" ? "bg-dark text-light comment-section py-2": "comment-section py-2"}>
-      <CommentList showComment={comments} deleteComment={deleteComment} />
-    </div>
-    <div className={theme === "dark" ? "bg-dark text-light comment-section setHeight": "comment-section setHeight"}>
-      <AddComment asin={selected} token={Token} Api={API_POST} getComments={getComments} />
-    </div>
+      <div data-testid="comment">
+        <div className={theme === "dark" ? "bg-dark text-light comment-section py-2": "comment-section py-2"}>
+          <CommentList showComment={comments} deleteComment={deleteComment} />
+        </div>
+        <div className={theme === "dark" ? "bg-dark text-light comment-section setHeight": "comment-section setHeight"}>
+          <AddComment asin={selected} token={Token} Api={API_POST} getComments={getComments} />
+        </div>
+      </div>
     </>
   )
 }
