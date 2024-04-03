@@ -9,17 +9,15 @@ import { CloseButton } from 'react-bootstrap';
 
 
 export default function AllTheBooks({books, input}) {
-  const [searchResult, setSearchResult] = useState();
+  const [searchResult, setSearchResult] = useState(books);
   const {selected, setSelected} = useContext(SelectContext);
 
 // console.log(books)
 
   useEffect(() => {
 
-    if(books) {
       const filteredBooks = books.filter((book) => book.title.toLowerCase().includes(input.toLowerCase().trim()));
       setSearchResult(filteredBooks);
-    }
 }, [input, books]);
 
 

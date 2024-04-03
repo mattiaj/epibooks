@@ -11,7 +11,7 @@ export default function AllTheBooksHome({input}) {
   
   return (
     <>
-      <main className={theme === "dark" ? "bg-secondary" : ""}>
+      <main className={theme === "dark" ? "bg-secondary pt-4" : "pt-4"}>
         <AllTheBooks books={fantasyBooks} input={input} />
         <Footer />
       </main>

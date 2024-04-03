@@ -26,7 +26,7 @@ export default function BookCard({bookData}) {
 
   return (
     <>
-        <Card id={asin} className={theme === "dark" ? "bg-dark card col-md-3 col-6 pt-2 mb-4 border-3 text-light" : "bg-light card col-md-3 col-6 pt-2 mb-4 border-3"} border={(selected === asin) ? `danger` : `success`} style={{ width: '18rem' }}>
+        <Card id={asin} data-testid="card-container" className={theme === "dark" ? "bg-dark card col-md-3 col-6 pt-2 mb-4 border-3 text-light" : "bg-light card col-md-3 col-6 pt-2 mb-4 border-3"} border={(selected === asin) ? `danger` : ""} style={{ width: '18rem' }}>
           <Card.Img variant="top" onClick={handleSelect} className='image' src={img} />
           <Card.Body >
             <Card.Title>{title}</Card.Title>
